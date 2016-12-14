@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.res.Resources;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
@@ -49,7 +50,7 @@ public class SmartDialog {
     @UiThread
     private Dialog initSmartDialog(final Builder builder) {
         final Dialog smartDialog = new Dialog(builder.context, R.style.SmartDialog);
-        View view = LayoutInflater.from(builder.context).inflate(R.layout.smart_dialog, null);
+        View view = LayoutInflater.from(builder.context).inflate(R.layout.smart_dialogs, null);
 
         ImageView vIcon = (ImageView) view.findViewById(R.id.smartDialog_icon);
         TextView vTitle = (TextView) view.findViewById(R.id.smartDialog_title);
@@ -90,25 +91,6 @@ public class SmartDialog {
                         smartDialog.dismiss();
                 }
             });
-
-            if (builder.btn_colorPositive != 0) {
-                vPositive.setTextColor(builder.btn_colorPositive);
-            }
-
-            if (builder.btn_colorPositiveBackground == 0) {
-                TypedValue v = new TypedValue();
-                boolean hasColorPrimary = builder.context.getTheme().resolveAttribute(R.attr.colorPrimary, v, true);
-                builder.btn_colorPositiveBackground = !hasColorPrimary ? v.data : ContextCompat.getColor(builder.context, R.color.colorPrimary);
-            }
-
-            Drawable buttonBackground = UtilsLibrary.createButtonBackgroundDrawable(builder.context, builder.btn_colorPositiveBackground);
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                vPositive.setBackground(buttonBackground);
-            } else {
-                // noinspection deprecation
-                vPositive.setBackgroundDrawable(buttonBackground);
-            }
         }
 
         if (builder.btn_negative != null) {
@@ -123,10 +105,6 @@ public class SmartDialog {
                         smartDialog.dismiss();
                 }
             });
-
-            if (builder.btn_colorNegative != 0) {
-                vNegative.setTextColor(builder.btn_colorNegative);
-            }
         }
 
         smartDialog.setContentView(view);
@@ -151,12 +129,6 @@ public class SmartDialog {
         protected CharSequence btn_negative, btn_positive;
         protected ButtonCallback btn_negative_callback, btn_positive_callback;
         protected boolean isAutoDismiss;
-
-        // Button text colors
-        protected int btn_colorNegative, btn_colorPositive;
-
-        // Button background colors
-        protected int btn_colorPositiveBackground;
 
         // Custom View
         protected View customView;
@@ -211,16 +183,6 @@ public class SmartDialog {
             return this;
         }
 
-        public Builder setPositiveTextColorResource(@ColorRes int textColorRes) {
-            this.btn_colorPositive = ResourcesCompat.getColor(context.getResources(), textColorRes, null);
-            return this;
-        }
-
-        public Builder setPositiveTextColor(int color) {
-            this.btn_colorPositive = color;
-            return this;
-        }
-
         public Builder setPositiveText(@StringRes int buttonTextRes) {
             setPositiveText(this.context.getString(buttonTextRes));
             return this;
@@ -233,16 +195,6 @@ public class SmartDialog {
 
         public Builder onPositive(@NonNull ButtonCallback buttonCallback) {
             this.btn_positive_callback = buttonCallback;
-            return this;
-        }
-
-        public Builder setNegativeTextColorResource(@ColorRes int textColorRes) {
-            this.btn_colorNegative = ResourcesCompat.getColor(context.getResources(), textColorRes, null);
-            return this;
-        }
-
-        public Builder setNegativeTextColor(int color) {
-            this.btn_colorNegative = color;
             return this;
         }
 
