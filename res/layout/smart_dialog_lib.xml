@@ -27,13 +27,13 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/bottomDialog_icon"
+                android:id="@+id/smartDialog_icon"
                 android:visibility="gone"
                 android:layout_width="42dp"
                 android:layout_height="42dp"
                 android:layout_marginRight="20dp" />
             <TextView
-                android:id="@+id/bottomDialog_title"
+                android:id="@+id/smartDialog_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
@@ -49,7 +49,7 @@
             android:layout_marginTop="10dp">
 
             <TextView
-                android:id="@+id/bottomDialog_content"
+                android:id="@+id/smartDialog_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
@@ -62,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <FrameLayout
-                android:id="@+id/bottomDialog_custom_view"
+                android:id="@+id/smartDialog_custom_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             </FrameLayout>
@@ -76,19 +76,21 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/bottomDialog_cancel"
+                android:id="@+id/smartDialog_cancel"
                 android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Button.Flat"
-                android:text="@android:string/cancel"/>
+                style="?android:attr/borderlessButtonStyle"
+                android:text="@android:string/cancel"
+                android:textColor="@android:color/material_pixel_blue_bright" />
             <Button
-                android:id="@+id/bottomDialog_ok"
+                android:id="@+id/smartDialog_ok"
                 android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Button"
-                android:text="@android:string/ok"/>
+                style="?android:attr/borderlessButtonStyle"
+                android:text="@android:string/ok" 
+				android:textColor="@android:color/material_pixel_blue_bright" />
 
         </LinearLayout>
 
