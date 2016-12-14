@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.content.res.Resources
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
@@ -49,7 +50,7 @@ public class SmartDialog {
     @UiThread
     private Dialog initSmartDialog(final Builder builder) {
         final Dialog smartDialog = new Dialog(builder.context, R.style.SmartDialog);
-        View view = LayoutInflater.from(builder.context).inflate(R.layout.smart_dialog, null);
+        View view = LayoutInflater.from(builder.context).inflate(R.layout.smart_dialogs, null);
 
         ImageView vIcon = (ImageView) view.findViewById(R.id.smartDialog_icon);
         TextView vTitle = (TextView) view.findViewById(R.id.smartDialog_title);
@@ -97,11 +98,11 @@ public class SmartDialog {
 
             if (builder.btn_colorPositiveBackground == 0) {
                 TypedValue v = new TypedValue();
-                boolean hasColorPrimary = builder.context.getTheme().resolveAttribute(R.attr.colorPrimary, v, true);
+                boolean hasColorPrimary = builder.context.getTheme().resolveAttribute(android.R.attr.colorPrimary, v, true);
                 builder.btn_colorPositiveBackground = !hasColorPrimary ? v.data : ContextCompat.getColor(builder.context, R.color.colorPrimary);
             }
 
-            Drawable buttonBackground = UtilsLibrary.createButtonBackgroundDrawable(builder.context, builder.btn_colorPositiveBackground);
+            Drawable buttonBackground = Utils.createButtonBackgroundDrawable(builder.context, builder.btn_colorPositiveBackground);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                 vPositive.setBackground(buttonBackground);
@@ -282,10 +283,10 @@ public class SmartDialog {
 
         public Builder setCustomView(View customView, int left, int top, int right, int bottom) {
             this.customView = customView;
-            this.customViewPaddingLeft = UtilsLibrary.dpToPixels(context, left);
-            this.customViewPaddingRight = UtilsLibrary.dpToPixels(context, right);
-            this.customViewPaddingTop = UtilsLibrary.dpToPixels(context, top);
-            this.customViewPaddingBottom = UtilsLibrary.dpToPixels(context, bottom);
+            this.customViewPaddingLeft = Utils.dpToPixels(context, left);
+            this.customViewPaddingRight = Utils.dpToPixels(context, right);
+            this.customViewPaddingTop = Utils.dpToPixels(context, top);
+            this.customViewPaddingBottom = Utils.dpToPixels(context, bottom);
             return this;
         }
 
