@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.res.Resources;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
@@ -49,7 +50,7 @@ public class SmartDialog {
     @UiThread
     private Dialog initSmartDialog(final Builder builder) {
         final Dialog smartDialog = new Dialog(builder.context, R.style.SmartDialog);
-        View view = LayoutInflater.from(builder.context).inflate(R.layout.smart_dialog, null);
+        View view = LayoutInflater.from(builder.context).inflate(R.layout.smart_dialogs, null);
 
         ImageView vIcon = (ImageView) view.findViewById(R.id.smartDialog_icon);
         TextView vTitle = (TextView) view.findViewById(R.id.smartDialog_title);
@@ -97,7 +98,7 @@ public class SmartDialog {
 
             if (builder.btn_colorPositiveBackground == 0) {
                 TypedValue v = new TypedValue();
-                boolean hasColorPrimary = builder.context.getTheme().resolveAttribute(R.attr.colorPrimary, v, true);
+                boolean hasColorPrimary = builder.context.getTheme().resolveAttribute(android.R.attr.colorPrimary, v, true);
                 builder.btn_colorPositiveBackground = !hasColorPrimary ? v.data : ContextCompat.getColor(builder.context, R.color.colorPrimary);
             }
 
