@@ -15,7 +15,7 @@
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := smartdialogs
+LOCAL_MODULE := aoscp-framework
 LOCAL_SDK_VERSION := 24
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
 
