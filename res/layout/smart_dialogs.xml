@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 style="?android:attr/borderlessButtonStyle"
                 android:text="@android:string/cancel"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/material_pixel_blue_bright" />
             <Button
                 android:id="@+id/smartDialog_ok"
                 android:visibility="gone"
@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 style="?android:attr/borderlessButtonStyle"
                 android:text="@android:string/ok" 
-				android:textColor="@android:color/black" />
+				android:textColor="@android:color/material_pixel_blue_bright" />
 
         </LinearLayout>
 
