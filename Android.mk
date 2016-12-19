@@ -21,6 +21,9 @@ LOCAL_SRC_FILES := $(call all-java-files-under, src)
 
 LOCAL_STATIC_JAVA_LIBRARIES := android-support-v4 \
     android-support-v7-appcompat \
+    android-support-v7-preference \
+    android.support.v14.preference \
+    android.support.v17.preference \
     android-support-design
 
 LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res
@@ -29,5 +32,8 @@ LOCAL_AAPT_FLAGS := --auto-add-overlay
 LOCAL_AAPT_FLAGS += --extra-packages android.support.v4
 LOCAL_AAPT_FLAGS += --extra-packages android.support.v7.appcompat
 LOCAL_AAPT_FLAGS += --extra-packages android.support.design
+LOCAL_AAPT_FLAGS += --extra-packages android.support.v7.preference
+LOCAL_AAPT_FLAGS += --extra-packages android.support.v14.preference
+LOCAL_AAPT_FLAGS += --extra-packages android.support.v17.preference
 
 include $(BUILD_STATIC_JAVA_LIBRARY)
