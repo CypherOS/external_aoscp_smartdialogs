@@ -3,6 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
 	
+	<color name="sd_background">#FF263238</color>
+	<color name="sd_shadow">#33000000</color>
+	
     <color name="btn_background">#ff4285f4</color>
     <color name="flat_pressed">#66999999</color>
 </resources>
