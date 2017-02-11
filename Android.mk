@@ -13,21 +13,19 @@
 # limitations under the License.
 
 LOCAL_PATH := $(call my-dir)
+
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := aoscp-framework
-LOCAL_SDK_VERSION := 24
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
 
-LOCAL_STATIC_JAVA_LIBRARIES := android-support-v4 \
+LOCAL_MODULE_TAGS := optional
+
+LOCAL_MODULE := aoscp-framework
+
+LOCAL_JAVA_LIBRARIES := android-support-v4 \
     android-support-v7-appcompat \
     android-support-design
 
 LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res
 
-LOCAL_AAPT_FLAGS := --auto-add-overlay
-LOCAL_AAPT_FLAGS += --extra-packages android.support.v4
-LOCAL_AAPT_FLAGS += --extra-packages android.support.v7.appcompat
-LOCAL_AAPT_FLAGS += --extra-packages android.support.design
-
-include $(BUILD_STATIC_JAVA_LIBRARY)
+include $(BUILD_JAVA_LIBRARY)
