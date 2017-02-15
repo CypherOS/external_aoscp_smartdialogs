@@ -25,10 +25,10 @@ LOCAL_MODULE_TAGS := optional
 
 LOCAL_MODULE := aoscp-framework
 
-LOCAL_JAVA_LIBRARIES := android-support-v4 \
+LOCAL_STATIC_JAVA_LIBRARIES := android-support-v4 \
     android-support-v7-appcompat \
     android-support-design
 
 LOCAL_RESOURCE_DIR += $(LOCAL_PATH)/res 
 
-include $(BUILD_JAVA_LIBRARY)
+include $(BUILD_STATIC_JAVA_LIBRARY)
