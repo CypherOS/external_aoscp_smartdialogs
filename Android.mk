@@ -29,4 +29,6 @@ LOCAL_JAVA_LIBRARIES := android-support-v4 \
     android-support-v7-appcompat \
     android-support-design
 
+LOCAL_RESOURCE_DIR += $(LOCAL_PATH)/res 
+
 include $(BUILD_JAVA_LIBRARY)
