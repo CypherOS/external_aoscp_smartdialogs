@@ -1,4 +1,4 @@
-# Copyright (C) 2016 CypherOS
+# Copyright (C) 2015 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,27 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_PATH := $(call my-dir)
+# We currently have customized supportfor AW2013 and QPNP controllers
+ifeq ($(call match-word-in-list,$(BOARD_LIGHTS_VARIANT),aw2013 qpnp),true)
+
+LOCAL_PATH:= $(call my-dir)
 
 include $(CLEAR_VARS)
 
-ifeq ($(BOARD_USES_AOSCP_HARDWARE),true)
-    include $(call all-makefiles-under, src/java/com/aoscp/hardware)
-endif
+LOCAL_SRC_FILES := lights-$(BOARD_LIGHTS_VARIANT).c
+LOCAL_MODULE_RELATIVE_PATH    := hw
+LOCAL_SHARED_LIBRARIES := liblog libcutils
 
-LOCAL_SRC_FILES := $(call all-java-files-under, src) \
-                   $(call all-Iaidl-files-under, src)
-
-LOCAL_AIDL_INCLUDES := $(LOCAL_PATH)/src/java
-
+LOCAL_MODULE := lights.$(TARGET_BOARD_PLATFORM)
 LOCAL_MODULE_TAGS := optional
 
-LOCAL_MODULE := aoscp-framework
+include $(BUILD_SHARED_LIBRARY)
 
-LOCAL_STATIC_JAVA_LIBRARIES := android-support-v4 \
-    android-support-v7-appcompat \
-    android-support-design
-
-LOCAL_RESOURCE_DIR += $(LOCAL_PATH)/res 
-
-include $(BUILD_STATIC_JAVA_LIBRARY)
+endif
